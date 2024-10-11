@@ -21,8 +21,8 @@ body{
     border-radius: 10px;
     position: relative; 
     width: 100%; 
-    height: 45%;
-    margin: 15px 0px;
+    height: 100%;
+ 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,8 +30,7 @@ body{
 }
 @media (min-width: 390px) {
     .video{
-        height: 65%;
-        margin-top: 20px;
+        height: 100%;
     }
 }
 
@@ -183,6 +182,9 @@ form *{
     display: none;
     background-color: rgba(128, 127, 127, 0.5);
     backdrop-filter: blur(1px); 
+}
+.textAndIconlj{
+    height: 100%;
 }
 #emailPopup{
     box-shadow: 0 0 600px rgba(10, 0, 0, 10);
