@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ㅤ</title>
+    <link rel="stylesheet" id="font-awesome-5-all-css" href="css/all.min.css" media="all"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainPages">
+        <iframe id="mainFrame" src="mainPage.html" frameborder="0"></iframe>
+        <footer id="footer" style="background-color: red;">
+                <div class="imagesContainer">
+                    <div>
+                        <img id="saqueImagem" src="./imagens/app/Retiro.png" alt="saque imagem">
+                    </div>
+                    <div>
+                        <img class="botaoMaior" id="inicioImagem"  src="./imagens/app/inicio.png" alt="">
+                    </div>
+                    <div>
+                        <img id="bonoImagem" src="./imagens/app/BONO-removebg-preview.png" alt="">
+                    </div>
+                
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.getElementById('mainFrame');
+            const footer = document.getElementById('footer');
+            const images = document.querySelectorAll('#footer .imagesContainer img');
+            const saqueImagem = document.getElementById('saqueImagem');
+    
+            const validSrcs = ['retiro.html', 'mainPage.html', 'areaMembros.html', 'retificar.html'];
+    
+            function checkIframeSrc() {
+                if (!validSrcs.includes(iframe.src.split('/').pop())) {
+                    footer.style.display = 'none';
+                } else {
+                    footer.style.display = 'block';
+                }
+            }
+    
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    // Trocar src do iframe
+                    if (img.id === 'saqueImagem') {
+                        iframe.src = 'retiro.html';
+                    } else if (img.id === 'inicioImagem') {
+                        iframe.src = 'mainPage.html';
+                    } else if (img.id === 'bonoImagem') {
+                        iframe.src = 'areaMembros.html';
+                    }
+    
+                    // Adicionar classe botaoMaior ao botão clicado e remover dos outros
+                    images.forEach(otherImg => {
+                        if (otherImg === img) {
+                            otherImg.classList.add('botaoMaior');
+                        } else {
+                            otherImg.classList.remove('botaoMaior');
+                        }
+                    });
+    
+                    checkIframeSrc();
+                });
+            });
+    
+            // Check iframe src on load
+            iframe.addEventListener('load', checkIframeSrc);
+    
+            // Listen for messages from the iframe
+            window.addEventListener('message', function(event) {
+                if (event.data === 'changeToRetificar') {
+                    iframe.src = 'retiro.html';
+                    
+                    images.forEach(otherImg => {
+                        otherImg.classList.remove('botaoMaior');
+                    });
+                    saqueImagem.classList.add('botaoMaior');
+    
+                    checkIframeSrc();
+                }
+            });
+        });
+
+
+  
+
+    </script>
+    
+</body>
+</html>

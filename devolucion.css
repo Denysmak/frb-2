@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 7% 3%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #fff, #d9d9d9);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* REEMBOLSO */
+
+
+.fa-arrow-right{
+    border-radius:50%;
+    padding: 5px;
+    font-size: 8px;
+}
+.iconeBorda{
+    border: 1.5px solid white;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.reembolso{
+    margin-top: 10%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    padding: 5% 10%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.reembolso p{
+    margin: 9px;
+}
+#botaoSolicitar{
+    color: rgb(216, 208, 208);
+    background-color: red;
+    padding: 5.5%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:center;  
+}
+#botaoSolicitar:active{
+    background-color: rgb(165, 44, 44);
+    color: white;
+    font-weight: bold;
+}
+/* END REEMBOLSO */
+/* ALERTATEXTO */
+
+.alertaTexto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10% 5%;
+    text-align: center;
+}
+.alertaTexto img{
+    width: 90px;
+    margin-bottom: 8%;
+}
+/* END ALERTATEXTO */
+/* BOTAO VOLTAR */
+#voltarAplicacao{
+    background-color: rgb(0, 119, 255);
+    padding: 5.5%;
+    border-radius: 20px;
+    width: 80%;
+    color: rgb(216, 208, 208);
+    border: none;
+}
+#voltarAplicacao:active{
+    color: white;
+    background-color: rgb(39, 133, 240);
+    font-weight: bold
+}
+
+
+
+
+/* END BOTAO VOLTAR */@media (min-width:700px){
+   body{
+    display: none;
+   }
+}

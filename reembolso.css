@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow-y: hidden;
+    height: 100vh;
+    padding: 25% 1%;
+    display: flex;
+    background: linear-gradient(180deg, #fff, #d9d9d9);
+    font-family: Arial, sans-serif;
+    
+}
+main{
+
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+    height: 380px;
+    width: 100%;
+    padding: 8% 3%;
+}
+
+
+/* TEXTO PRINCIPAL */
+
+.text h2{
+    margin-bottom: 5%;
+}
+.text p{
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* END TEXTO PRINCIPAL */
+
+/* FORM */
+form{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+}
+form button{
+    background-color: red;
+    color: rgb(216, 208, 208);
+    border: none;
+    padding: 2% 25%;
+    display: flex;
+    height: 40px;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+i{
+    margin-right: 5%;
+}
+label{
+    margin-top: 3%;
+}
+input{
+    height: 40px;
+    padding-left: 3%;
+    outline: none;
+    font-size: 16px;
+}
+
+input::placeholder{
+    color: rgb(145, 145, 145);
+}
+
+.nomeDiv, .emailDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+/* END FORM */
+
+#volverButton{
+    width: 100%;
+    border: none;
+    background-color: rgb(0, 119, 255);
+    border-radius: 20px;
+    color: rgb(216, 208, 208);
+    padding: 2% 25%;
+    display: flex;
+    height: 40px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+@media (min-width:700px){
+    body{
+     display: none;
+    }
+ }
+

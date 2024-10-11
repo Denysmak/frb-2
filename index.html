@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ㅤ</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav>
+        <div class="menu">
+            <div class="left"></div>
+            <div class="right"><img decoding="async" src="imagens/app/user-circle (1).png" alt="logo" class="logo"></div>
+        </div>
+    </nav>
+    <div class="loginBoxContainer">
+        <div class="loginBox">
+            <div class="text">
+                <h3>Bienvenue sur l'application !</h3>
+                <p>Saisissez votre adresse électronique pour continuer</p>
+            </div>
+            <form id="emailForm" class="form">
+                <input type="email" name="email" id="email" placeholder="Entrez votre adresse e-mail ici." required>
+                <button type="submit" id="prosseguirBotao">ENTRER</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+
+            // Armazena o email atual
+            localStorage.setItem('currentEmail', email);
+
+            // Verifica se o usuário já tem um valor salvo
+            if (!localStorage.getItem(`${email}-qtdDinheiro`)) {
+                localStorage.setItem(`${email}-qtdDinheiro`, 0);
+            }
+
+            window.location.href = 'paginasPrincipais.html';
+        })
+    </script>
+</body>
+</html>

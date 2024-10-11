@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 7% 3%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #fff, #d9d9d9);
+}
+/* HEADER */
+.sectionOneHeader{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sectionOneHeader div{
+    height: 34px;
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 43px ;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: var( --e-global-color-text );
+}
+
+.desejaCancelar{
+    margin-top: 10%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    padding: 2.5%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.desejaCancelar h4{
+    text-align: center;
+}
+.desejaCancelarBotoes{
+    /*border: 1px solid cyan;*/
+    height: 60%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.cancelar{
+    background-color: rgb(201, 18, 18);
+    color: white;
+    border: none;
+}
+.acceder{
+    background-color: rgb(0, 119, 255);
+    color: white;
+    border: none;
+}
+.desejaCancelarBotoes button{
+    width: 80%;
+    height: 40%;
+    border-radius: 20px;
+    font-weight: bold;
+}
+/* END HEADER */
+/* MAIN */
+
+
+
+.moduloVideo{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #3A9BFF;
+    color: white;
+    margin-top: 5%;
+
+}
+
+
+
+.moduloVideoLeft{
+
+    background-color: #605BE4;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+   
+}
+.moduloVideoLeft i{
+    font-size: 1.45rem;
+    color: white;
+}
+
+.moduloVideoRight{
+    flex: 1;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+.moduloVideo p{
+    color: white;
+
+    display: inline-block;
+}
+.moduloVideoRight i{
+   font-size: 1.5rem;
+
+}
+
+@keyframes video-slide-open{
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        
+    }
+}
+@keyframes video-slide-close{
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20px);
+        opacity: 0;
+        
+        
+    }
+}
+
+.youtubeVideo{
+    margin-top: 5%;
+    border:none;
+    width: 100%;
+    height: 220px; 
+   display: none;
+}
+.youtubeVideo-open{
+    animation: video-slide-open 0.4s;
+
+}
+.youtubeVideo-close{
+    animation: video-slide-close 0.1s;
+
+}
+.modulo{
+    margin-top: 10%;
+    text-align: center;
+}
+
+
+
+@media (min-width:700px){
+    body{
+
+     display: none;
+    }
+ }
+
+/* END MAIN */

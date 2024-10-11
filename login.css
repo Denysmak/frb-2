@@ -1,0 +1,176 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    z-index: 10;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #fff, #d9d9d9);
+}
+
+/* NAVBAR */
+nav{
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #fff, #d9d9d9);
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.menu {
+    display: flex;
+    width: 95%;
+    height: 80%;
+    
+  }
+.right, .left{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6%;
+}
+
+.menu span{
+    text-align: center;
+    align-content: center;
+    text-align: right; 
+    width: 100%; 
+    font-size: 42px;
+    margin-right: 10px;
+}
+.logo{
+    width:45px;
+}
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-align: right; 
+    width: 120%; 
+    font-size: 60px; 
+    color: black; 
+}
+
+/* END NAVBAR */
+/* LOGIN BOX */
+
+.loginBoxContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+.loginBox{
+    width: 90%;
+    height: 48%;
+    background-color: #d9d9d9;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ 
+}
+
+.form {
+    height: 40%;
+}
+
+
+/* TEXT DIV */
+.text{
+    height: 25%;
+}
+.text h3{
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+.text p{
+    
+    color: #4a4a4a; 
+    font-size: 15px;
+    text-align: center;
+
+}
+
+/* END TEXT DIV */
+
+/* FORM DIV */
+#email{
+    border-radius: 12px;
+    border: 1px solid #202020;
+    width: 90%;
+    height: 38%;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+}
+
+
+
+#prosseguirBotao{
+    background-image: linear-gradient(125deg, #007bff, #007bff); 
+    width: 90%;
+    border-radius: 12px;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    margin: 4% auto;
+    height: 38%;
+}
+
+
+
+/* END FORM DIV */
+
+/* END LOGIN BOX */
+
+@media (max-width:300px){
+    /* NAV BAR */
+    .text {
+        height: 40%;
+    }
+    /* END NAV BAR */
+}
+@media (min-width:700px){
+    body{
+     display: none;
+    }
+ }
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REFUND </title>
+    <link rel="stylesheet" href="reembolso.css">
+    <link rel="icon" href="./imagens/app/arrow-rotate-right-solid (1).svg" type="image/svg+xml">
+    <script src="https://kit.fontawesome.com/58129d0cdf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main>
+        <div class="text">
+            <h2>Why are you leaving so soon? 😢</h2>
+            <p>We're sorry that you don't want to continue with our application.
+                <br><br>
+                But don't worry, you have the right to request a refund.<br>
+                To request a refund, simply provide the following information:
+            </p>
+        </div>
+        <form id="emailForm" action="post">
+            <div class="emailDiv">
+                <label for="email">Email Address</label>
+                <input type="email" placeholder="Email" id="email" name="email">
+            </div>
+            <button type="submit"><i class="fa-solid fa-check"></i><h3>Submit a Request</h3></button>
+        </form>
+        <button id="volverButton" onclick="location.href='paginasPrincipais.html'"><h3>Return to Menu</h3></button>
+    </main>
+    <script type="module">
+     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getDatabase, ref, push, set, serverTimestamp, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBToDPzjhQkgBwDciL7FXKtHzir05l1KYg",
+            authDomain: "app-anuncios-8e165.firebaseapp.com",
+            databaseURL: "https://app-anuncios-8e165-default-rtdb.firebaseio.com",
+            projectId: "app-anuncios-8e165",
+            storageBucket: "app-anuncios-8e165.appspot.com",
+            messagingSenderId: "888586239895",
+            appId: "1:888586239895:web:3966762ce69926938cced2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value.trim();
+
+            // Verificar se o email já existe no Firebase Database
+            checkEmailExists(email).then((exists) => {
+                if (!exists) {
+                    // Adicionar o email ao Firebase Database se não existir
+                    addDataToFirebase(email).then(() => {
+                        // Redireciona para a página inicial após sucesso
+                        window.location.href = 'https://ingresos-enlinea.fun/ok/';
+                    }).catch((error) => {
+                        console.error('Erro ao adicionar email ao Firebase:', error);
+                    });
+                } else {
+                    // Se o email já existe, redireciona para a página inicial mesmo assim
+                    window.location.href = 'https://ingresos-enlinea.fun/ok/';
+                }
+            }).catch((error) => {
+                console.error('Erro ao verificar se o email existe:', error);
+            });
+        });
+
+        function checkEmailExists(email) {
+            const emailsRef = ref(db, 'emails');
+            return get(emailsRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const emails = snapshot.val();
+                    for (let key in emails) {
+                        if (emails[key].email === email) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }).catch((error) => {
+                console.error('Erro ao obter emails do Firebase:', error);
+                throw error;
+            });
+        }
+
+        function addDataToFirebase(email) {
+            const emailsRef = ref(db, 'emails');
+            const newEmailRef = push(emailsRef);
+            return set(newEmailRef, {
+                email: email,
+                timestamp: serverTimestamp()
+            }).then(() => {
+                console.log('Email adicionado com sucesso');
+            }).catch((error) => {
+                alert('Erro ao adicionar email');
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>

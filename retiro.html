@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar retiro</title>
+    <link rel="stylesheet" href="retiro.css">
+    <link rel="icon" href="imagens/app/money-bill-1-regular.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <nav>
+        <div class="menu">
+        </div>
+    </nav>
+    <main>
+        <div class="dinheiroContainer">
+            <p>Disponible pour retrait</p>
+            <h1>$ <span id="qtdDinheiro">00.00</span></h1>
+        </div>
+        <div class="paypalContainer">
+            <img id="paypalIcon" src="imagens/app/paypal-3384015_1280.jpg" alt="Icône PayPal" class="paypalIconNaoAtivo">
+        </div>
+        <form>
+            <input type="email" name="email" placeholder="Entrez votre adresse e-mail ici" required>
+            <input type="number" name="qtdRetirar" placeholder="Entrez le montant que vous souhaitez retirer sur votre compte" required>
+            <button id="botaoRetiro" type="submit">FAIRE UN RETRAIT</button>
+        </form>
+            
+        </form>
+    </main>
+    <div id="atencionPopup">
+        <div class="textAndIcon">
+            <lord-icon src="https://cdn.lordicon.com/qmcsqnle.json" trigger="loop" delay="1000" colors="primary:#ffc738,secondary:#b26836" style="width:125px;height:125px; display: flex; margin: 0 auto;"></lord-icon>
+            <h2>Félicitations ! 🥳</h2>
+            <h3>💰Votre retrait a été traité avec succès et est en cours de révision. Veuillez attendre jusqu'à 15 jours pour que le dépôt soit effectué directement sur votre compte bancaire PayPal</h3>
+            </div>
+            <button id="closeAtencionPopup">X</button>
+            </div>
+            <div id="paypalNotification">
+                <img src="imagens/app/paypal.png" alt="">
+                <div class="text">
+                    <h4>PayPal</h4>
+                    <p>Vous avez reçu $<span id="valorRetirado">3000</span> de SafeSpace</p>
+                </div>
+                <p class="whenText">Maintenant</p>
+            </div>
+            <div id="faltaDinheiroPopupContainer">
+                <div id="faltaDinheiroPopup">
+                    <div class="textAndIconlj">
+                        <lord-icon src="https://cdn.lordicon.com/qmcsqnle.json" trigger="loop" delay="1000" colors="primary:#ffc738,secondary:#b26836" style="width:125px;height:125px; display: flex; margin: 0 auto;"></lord-icon>
+                        <h3>Erreur lors du traitement du retrait</h3>
+                        <div  class="video">
+                            <video id="myVideo" preload="auto" controls style=" width: 100%; height: 80%; object-fit: cover;">
+                                <source src="/imagens/tinywow_video-ytb_66631790.mp4" type="video/mp4">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
+
+                            <button  id="closeFaltaDinheiro">Close</button>
+                        
+                        </div>
+                       
+                        
+                        
+            
+                        
+                     
+                        
+               
+            </div>
+        </div>
+    </div>
+    <div id="emailPopupContainer">
+        <div id="emailPopup">
+            <div class="textAndIconlj">
+                <lord-icon src="https://cdn.lordicon.com/qmcsqnle.json" trigger="loop" delay="1000" colors="primary:#ffc738,secondary:#b26836" style="width:125px;height:125px; display: flex; margin: 0 auto;"></lord-icon>
+                <h3>Veuillez entrer une adresse e-mail valide</h3>
+                <button id="closeEmail">Close</button>
+            </div>
+        </div>
+    </div>
+  
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+    <script>
+
+
+        const icone = document.getElementById('paypalIcon');
+        const popup = document.getElementById('atencionPopup');
+        const botaoRetiro = document.getElementById('botaoRetiro');
+        const closePopupButton = document.getElementById('closeAtencionPopup');
+        const paypalNotification = document.getElementById('paypalNotification');
+        const faltaDinheiro = document.getElementById('faltaDinheiroPopupContainer')
+        const fecharDinheiro = document.getElementById('closeFaltaDinheiro')
+        const emailInvalido = document.getElementById('emailPopupContainer')
+        const fecharEmail = document.getElementById("closeEmail")
+        const video = document.getElementById('myVideo')
+
+        icone.addEventListener('click', () => {
+            icone.classList.toggle('paypalIconAtivo');
+        });
+
+
+
+        fecharDinheiro.addEventListener('click', ()=> {
+            faltaDinheiro.style.display = 'none'
+             video.pause();
+             video.currentTime = 0;
+             
+        })
+
+
+
+        fecharEmail.addEventListener('click', ()=> {
+            emailInvalido.style.display = 'none'
+        })
+        botaoRetiro.addEventListener('click', (event) => {
+    event.preventDefault();
+    const emailInput = document.querySelector('input[name="email"]').value;
+    const currentEmail = localStorage.getItem('currentEmail');
+    const qtdRetirar = parseFloat(document.querySelector('input[name="qtdRetirar"]').value);
+    const qtdDinheiroElement = document.getElementById("qtdDinheiro");
+    const valorAtual = parseFloat(qtdDinheiroElement.textContent);
+    const valorRetiradoElement = document.getElementById("valorRetirado");
+    
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput);
+
+    if (!emailValido) {
+        emailInvalido.style.display = 'block'
+        return;
+    }
+
+    if (qtdRetirar >= 3000 && qtdRetirar <= valorAtual) {
+        document.querySelector('input[name="email"]').value = '';
+        document.querySelector('input[name="qtdRetirar"]').value = '';
+        const novoValor = valorAtual - qtdRetirar;
+        qtdDinheiroElement.textContent = novoValor.toFixed(2);
+        localStorage.setItem(`${currentEmail}-qtdDinheiro`, novoValor.toFixed(2));
+        valorRetiradoElement.textContent = qtdRetirar.toFixed(2); // Atualiza o valor retirado
+        popup.style.display = 'flex';
+        paypalNotification.classList.add('show');
+        setTimeout(() => {
+            paypalNotification.classList.remove('show');
+        }, 3500);
+    } else {
+        faltaDinheiro.style.display = 'block'
+    }
+});
+
+
+        closePopupButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const email = localStorage.getItem('currentEmail');
+            const valorSalvo = localStorage.getItem(`${email}-qtdDinheiro`);
+            const qtdDinheiroElement = document.getElementById("qtdDinheiro");
+
+            if (valorSalvo) {
+                qtdDinheiroElement.textContent = parseFloat(valorSalvo).toFixed(2);
+            }
+
+            document.body.style.visibility = 'visible';
+        });
+
+        
+    </script>
+</body>
+</html>

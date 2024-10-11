@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVOLUCIÓN - OPINIX</title>
+    <script src="https://kit.fontawesome.com/58129d0cdf.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="./imagens/app/arrow-rotate-right-solid (1).svg" type="image/svg+xml">
+    <link rel="stylesheet" href="devolucion.css">
+</head>
+<body>
+    <main>
+        <div class="reembolso">
+                <h2>Solicitud de reembolso!</h2>
+                <p>Hola, ¿cómo está? Para solicitar un reembolso, simplemente haga clic en el siguiente botón:</p>
+            <div id="botaoSolicitar" onclick="location.href='reembolso.html'">
+                <div class="iconeBorda">
+                <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                SOLICITAR UN REEMBOLSO
+            </div>
+        </div>
+        <div class="alertaTexto">
+            <img src="./imagens/app/imagemDevolucion.png" alt="">
+            <p>Nos gustaría alertarle de que solicitar una devolución de cargo (una solicitud al operador de crédito para anular una compra no reconocida) sin una razón válida <u>es una acción ilegal según la Ley de Facturación Justa del Crédito (FCBA)</u>, que incluso perjudica a las empresas honradas y de buena reputación.
+            <br><br>
+            Esta práctica sugiere que usted no reconoce la compra como legítima, aunque efectivamente la haya realizado y recibido el producto/servicio, y puede dar lugar a acciones legales.
+            <br><br>
+            Recuerde que la honestidad en las transacciones en línea es crucial para mantener un entorno de compra seguro y fiable para todos.
+
+            </p>
+        </div>
+        <button id="voltarAplicacao" onclick="location.href='index.html'">VOLVER A LA APLICACIÓN</button>
+    </main>
+
+</body>
+</html>
