@@ -28,6 +28,11 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+.textAndIconlj{
+    height: 100%;
+}
+
+
 @media (min-width: 390px) {
     .video{
         height: 100%;
@@ -183,9 +188,7 @@ form *{
     background-color: rgba(128, 127, 127, 0.5);
     backdrop-filter: blur(1px); 
 }
-.textAndIconlj{
-    height: 100%;
-}
+
 #emailPopup{
     box-shadow: 0 0 600px rgba(10, 0, 0, 10);
     box-sizing: border-box;
